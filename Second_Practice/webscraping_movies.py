@@ -14,7 +14,6 @@ count = 0
 html_page = requests.get(url).text
 data = BeautifulSoup(html_page, 'html.parser')
 
-
 # from this point each run is different
 # I believe it might be because the webpage 
 # is not loading completely (maybe it needs
@@ -26,9 +25,6 @@ tables = data.find_all('tbody')
 
 # get rows from first table
 rows = tables[0].find_all('tr')
-
-# for row in rows:
-#     col = row.find_all("td")
 
 for row in rows:
     if count < 25:
@@ -46,6 +42,7 @@ for row in rows:
     else:
         break
 
+# filter for movies released in the 2000 (2000 included)
 filtered_df = df[df["Year"] >= 2000]
 filtered_df.to_csv(csv_path)
 
