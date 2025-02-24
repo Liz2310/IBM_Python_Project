@@ -47,5 +47,5 @@ filtered_df = df[df["Year"] >= 2000]
 filtered_df.to_csv(csv_path)
 
 conn = sqlite3.connect(db_name)
-df.to_sql(table_name, conn, if_exists='replace', index=False)
+filtered_df.to_sql(table_name, conn, if_exists='replace', index=False)
 conn.close()
